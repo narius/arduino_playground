@@ -19,7 +19,9 @@ int pin = ledPinGreen;
 float k = 5.0/1023.0;/*k faktor*/
 float Vm;
 float NTCresistance;
-String inByte;
+char inByte;
+String command;
+bool clearCommand=false;
 void setup() {
   pinMode(Moistpin, INPUT);
   pinMode(NTCpin, INPUT);
@@ -36,32 +38,54 @@ void setup() {
 }
 
 void loop() {
-  
+  Serial.flush(); //flush all previous received and transmitted data
+  while(!Serial.available()) ;
+  //while (!Serial.available()) {}
  //Serial.println(analogValue);
   //Serial.print("NTC value: ");
   //Serial.println(NTCvalue);
   //Serial.print("Light value: ");
   //Serial.println(LightValue);
   
-   if (Serial.available() > 0) {
+   /*while (Serial.available()>0) {
     // get incoming byte:
-    inByte = Serial.readString();
-    if(inByte.equals("moist\r\n")){
+    inByte = Serial.read();
+    if(inByte!='\n'){
+    command+=inByte;
+    }
+    else{
+    clearCommand=true;
+    }
+   }*/
+   if (Serial.available()){
+      //command=Serial.readString();
+      command=Serial.readStringUntil('\n');
+    }
+    if(command.equals("moisture")){
       MoistValue = analogRead(Moistpin);
-      Serial.print("Moistvalue: ");
       Serial.println(MoistValue); 
     }
-    if(inByte.equals("ntc")){
+    if(command.equals("temperature")){
       NTCvalue = analogRead(NTCpin);
-      Serial.print("NTCvalue: ");
       Serial.println(NTCvalue); 
     }
-    if(inByte.equals("light")){
+    if(command.equals("light")){
       LightValue = analogRead(Lightpin);
-      Serial.print("Light: ");
       Serial.println(LightValue); 
     }
-    Serial.println(inByte);
-  }
+    if(command.equals("blue_on")){//Turn on and off diods
+      digitalWrite(ledPinBlue, HIGH);
+    }
+    if(command.equals("blue_off")){//Turn on and off diods
+      digitalWrite(ledPinBlue, LOW);
+    }
+    else{
+      Serial.print("fel: ");
+      Serial.println(command);
+    }
+    if(clearCommand){
+      command="";
+      }
+    
   
 }

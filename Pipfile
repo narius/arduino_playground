@@ -9,6 +9,7 @@ verify_ssl = true
 serial = "*"
 flask = "*"
 flask-migrate = "*"
+pyserial = "*"
 
 [requires]
 python_version = "3.7"
