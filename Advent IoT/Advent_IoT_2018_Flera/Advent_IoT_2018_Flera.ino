@@ -83,9 +83,4 @@ void loop() {
       Serial.print("fel: ");
       Serial.println(command);
     }
-    if(clearCommand){
-      command="";
-      }
-    
-  
 }

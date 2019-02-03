@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello</title>
-    <a href="http://localhost:5000/ledBlue_on">Tänd Blå</a><br/>
-    <a href="http://localhost:5000/ledBlue_off">Släck Blå</a>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
+<div class="led_box blue">
+    <h1 class="header">Led blue</h1>
+    <div class="led {{blue_status}}"></div>
+    <a href="http://localhost:5000/ledBlue_on" class="button">Tänd Blå</a>
+    <a href="http://localhost:5000/ledBlue_off" class="button">Släck Blå</a>
+</div>
+<div class="measurement_box">
+    <p>{{moist.value}}</p>
+    <p>{{moist.time}}</p>
+</div>
 </body>
 </html>

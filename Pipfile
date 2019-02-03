@@ -6,10 +6,16 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-serial = "*"
 flask = "*"
 flask-migrate = "*"
+flask-debugtoolbar = "*"
+request = "*"
 pyserial = "*"
+flask-sqlalchemy = "*"
+pyfirmata = "*"
+flask-script = "*"
+flask-admin = "*"
+flask-security = "*"
 
 [requires]
 python_version = "3.7"

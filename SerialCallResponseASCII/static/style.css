@@ -1,0 +1,51 @@
+.led_box{
+    border: 5px solid black;
+    width: 30%;
+    padding: 5px;
+}
+.led_box.blue{
+    background-color: #5aa9f5;
+}
+.header{
+    align-content: center;
+    text-align: center;
+}
+
+.led.on{
+    border-radius: 16px;
+    width: 30px;
+    height: 30px;
+    background-color: #f1bb1f;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.led.off{
+    border-radius: 16px;
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+a.button{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: #be47f5;
+    width: 100px;
+    height: 60px;
+    -moz-appearance: button;
+    -webkit-appearance: button;
+    appearance: button;
+    line-height: 60px;
+    text-align: center;
+}
+
+.measurement_box{
+    border: 5px solid black;
+    width: 30%;
+    padding: 5px;
+    margin-top: 10px;
+}
